@@ -11,7 +11,7 @@ clock = pygame.time.Clock()
 
 # give random int
 def getRandInt():
-    return -(randint(0, 260))
+    return randint(225, 500)
 
 
 # initializing Imagehandler
