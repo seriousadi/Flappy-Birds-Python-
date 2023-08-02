@@ -21,14 +21,14 @@ bird_y = Imagehandler.y
 pipe1x, pipe1y = 400, getRandInt()
 pipe2x, pipe2y = 600, getRandInt()
 pipe3x, pipe3y = 800, getRandInt()
-running = True
+running = False
 current_directory = os.path.dirname(__file__)
-while running:
+while not running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            running = True
 
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("#71C5CF")
@@ -40,6 +40,7 @@ while running:
         background_speed = 0
         y_for_pipes = getRandInt()
     background_speed -= 5
+
     # movements of bird
     # when mouse isn't clicked the bird falls and when mouse is clicked it fly
     bird_y += 15
@@ -47,10 +48,10 @@ while running:
     if not mouse_left_click:
         Imagehandler.render_birdflying(bird_y)
 
-
     else:
         bird_y -= 50
         Imagehandler.render_birdup(bird_y)
+
     # managing pipes movements
     pipe1x -= 5
     pipe2x -= 5
@@ -66,6 +67,7 @@ while running:
         pipe3y = getRandInt()
 
     Imagehandler.render_pipes(x1=pipe1x, y1=pipe1y, x2=pipe2x, y2=pipe2y, x3=pipe3x, y3=pipe3y)
+    running = Imagehandler.bird_collided
 
     # flip() the display to put your work on screen
     pygame.display.flip()
