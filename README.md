@@ -1,2 +1,2 @@
 # Flappy-Birds-Python-
-Flappy Birds made with python
+A copy of the popular game Flappy Birds
